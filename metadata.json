@@ -1,5 +1,5 @@
 {
-  "game_name": "Platanus Hack: Caracas Brick Breaker",
-  "description": "Batalla campal por romper la mayor cantidad de ladrillos",
-  "player_mode": "two_player"
+  "game_name": "Libre Guacamaya",
+  "description": "Vuela como una guacamaya tricolor disparando semillas de girasol contra zamuros y el avión de los cazadores, cruzando selva, médanos y ciudad para encontrar tu libertad",
+  "player_mode": "single_player"
 }
