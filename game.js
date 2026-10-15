@@ -7,7 +7,7 @@ const GAME_HEIGHT = 600;
 // The cabinet screen is landscape, so the shooter lane runs vertically
 // through the middle of it, with HUD panels on either side.
 const PF_LEFT = 240;
-const PF_RIGHT = 560;
+const PF_RIGHT = 780;
 const PF_TOP = 54;
 const PF_BOTTOM = 560;
 const PF_CENTER_X = (PF_LEFT + PF_RIGHT) / 2;
@@ -594,11 +594,11 @@ function drawBackdrop(scene, themeName) {
     ], true);
 
     g.fillStyle(0x8a7a5a, 1);
-    g.fillPoints([{ x: 400, y: 330 }, { x: 356, y: 422 }, { x: 444, y: 422 }], true);
+    g.fillPoints([{ x: 510, y: 330 }, { x: 466, y: 422 }, { x: 554, y: 422 }], true);
     g.fillStyle(0x6a5a3e, 1);
-    g.fillRect(368, 400, 64, 22);
-    g.fillRect(380, 378, 40, 22);
-    g.fillRect(392, 356, 16, 22);
+    g.fillRect(478, 400, 64, 22);
+    g.fillRect(490, 378, 40, 22);
+    g.fillRect(502, 356, 16, 22);
 
     g.fillStyle(0x15391c, 1);
     g.fillPoints([
@@ -615,7 +615,7 @@ function drawBackdrop(scene, themeName) {
     });
 
     g.fillStyle(0xfff2cc, 0.85);
-    g.fillCircle(220, 100, 34);
+    g.fillCircle(330, 100, 34);
 
     g.fillStyle(0xd9b26a, 1);
     g.fillPoints([
@@ -644,7 +644,7 @@ function drawBackdrop(scene, themeName) {
     });
 
     g.fillStyle(0xffe6a0, 0.45);
-    g.fillCircle(180, 100, 26);
+    g.fillCircle(300, 100, 26);
 
     g.fillStyle(0x2a2a3e, 1);
     g.fillPoints([
@@ -654,10 +654,10 @@ function drawBackdrop(scene, themeName) {
     ], true);
 
     g.fillStyle(0x15121f, 1);
-    g.fillRect(388, 330, 24, 130);
-    g.fillTriangle(380, 330, 420, 330, 400, 305);
+    g.fillRect(498, 330, 24, 130);
+    g.fillTriangle(490, 330, 530, 330, 510, 305);
     g.fillStyle(0xffe6a0, 1);
-    g.fillCircle(400, 352, 7);
+    g.fillCircle(510, 352, 7);
 
     g.fillStyle(0x12111c, 1);
     const buildingX = [20, 70, 120, 170, 230, 300, 460, 520, 580, 640, 700, 760];
@@ -687,10 +687,10 @@ function drawBackdrop(scene, themeName) {
     ], true);
 
     g.fillStyle(0x242840, 1);
-    g.fillRect(388, 330, 24, 130);
-    g.fillTriangle(380, 330, 420, 330, 400, 305);
+    g.fillRect(498, 330, 24, 130);
+    g.fillTriangle(490, 330, 530, 330, 510, 305);
     g.fillStyle(0xffffff, 1);
-    g.fillCircle(400, 352, 7);
+    g.fillCircle(510, 352, 7);
 
     g.fillStyle(0x1a1d2c, 1);
     const buildingX = [20, 70, 120, 170, 230, 300, 460, 520, 580, 640, 700, 760];
@@ -736,7 +736,7 @@ function updateStarfield(scene, delta) {
 
 function createTerrain(scene) {
   scene.terrain = [];
-  for (let i = 0; i < 12; i += 1) {
+  for (let i = 0; i < 16; i += 1) {
     const cloud = scene.add.sprite(
       Phaser.Math.Between(PF_LEFT + 20, PF_RIGHT - 20),
       Phaser.Math.Between(PF_TOP, PF_BOTTOM),
@@ -769,11 +769,6 @@ function createPlayfieldFrame(scene) {
 
   scene.add
     .rectangle(125, GAME_HEIGHT / 2, 220, PF_BOTTOM - PF_TOP, COLORS.panel, 0.6)
-    .setDepth(1)
-    .setStrokeStyle(2, COLORS.panelBorder, 0.7);
-
-  scene.add
-    .rectangle(GAME_WIDTH - 110, GAME_HEIGHT / 2, 190, PF_BOTTOM - PF_TOP, COLORS.panel, 0.6)
     .setDepth(1)
     .setStrokeStyle(2, COLORS.panelBorder, 0.7);
 }
@@ -812,53 +807,53 @@ function createHud(scene) {
   scene.hud.title = createMultiColorText(scene, GAME_WIDTH / 2, 16, TITLE_SEGMENTS, '18px', 0).setDepth(15);
 
   scene.hud.scoreLabel = scene.add
-    .text(30, 90, 'PUNTAJE', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.textDim })
+    .text(30, 72, 'PUNTAJE', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.textDim })
     .setDepth(15);
   scene.hud.scoreValue = scene.add
-    .text(30, 108, '000000', { fontFamily: 'monospace', fontSize: '24px', color: COLORS.textBright, fontStyle: 'bold' })
+    .text(30, 90, '000000', { fontFamily: 'monospace', fontSize: '24px', color: COLORS.textBright, fontStyle: 'bold' })
     .setDepth(15);
 
   scene.hud.hiLabel = scene.add
-    .text(30, 160, 'RECORD', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.textDim })
+    .text(30, 136, 'RECORD', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.textDim })
     .setDepth(15);
   scene.hud.hiValue = scene.add
-    .text(30, 178, '000000', { fontFamily: 'monospace', fontSize: '18px', color: '#ffe14d' })
+    .text(30, 154, '000000', { fontFamily: 'monospace', fontSize: '18px', color: '#ffe14d' })
     .setDepth(15);
 
   scene.hud.waveLabel = scene.add
-    .text(30, 230, 'OLEADA', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.textDim })
+    .text(30, 196, 'OLEADA', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.textDim })
     .setDepth(15);
   scene.hud.waveValue = scene.add
-    .text(30, 248, '1', { fontFamily: 'monospace', fontSize: '24px', color: COLORS.textBright, fontStyle: 'bold' })
+    .text(30, 214, '1', { fontFamily: 'monospace', fontSize: '24px', color: COLORS.textBright, fontStyle: 'bold' })
     .setDepth(15);
 
   scene.hud.livesLabel = scene.add
-    .text(GAME_WIDTH - 200, 90, 'VIDAS', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.textDim })
+    .text(30, 260, 'VIDAS', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.textDim })
     .setDepth(15);
   scene.hud.livesIcons = [];
   for (let i = 0; i < START_LIVES; i += 1) {
-    const icon = scene.add.sprite(GAME_WIDTH - 200 + i * 20, 116, 'tex_ship').setScale(0.5).setDepth(15);
+    const icon = scene.add.sprite(44 + i * 30, 290, 'tex_ship').setScale(0.42).setDepth(15);
     scene.hud.livesIcons.push(icon);
   }
 
   scene.hud.missilesLabel = scene.add
-    .text(GAME_WIDTH - 200, 160, 'CHILLIDO', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.textDim })
+    .text(30, 330, 'CHILLIDO', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.textDim })
     .setDepth(15);
   scene.hud.missilesValue = scene.add
-    .text(GAME_WIDTH - 200, 178, 'III', { fontFamily: 'monospace', fontSize: '20px', color: '#ffd23f', fontStyle: 'bold' })
+    .text(30, 348, 'III', { fontFamily: 'monospace', fontSize: '20px', color: '#ffd23f', fontStyle: 'bold' })
     .setDepth(15);
 
   scene.hud.powerLabel = scene.add
-    .text(GAME_WIDTH - 200, 230, '', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.pickup })
+    .text(30, 396, '', { fontFamily: 'monospace', fontSize: '13px', color: COLORS.pickup })
     .setDepth(15);
 
   scene.hud.bossBarBg = scene.add
-    .rectangle(PF_CENTER_X, PF_TOP + 22, 280, 14, 0x0c1226, 0.9)
+    .rectangle(PF_CENTER_X, PF_TOP + 22, 360, 14, 0x0c1226, 0.9)
     .setStrokeStyle(2, COLORS.panelBorder, 0.9)
     .setDepth(15)
     .setVisible(false);
   scene.hud.bossBarFill = scene.add
-    .rectangle(PF_CENTER_X - 138, PF_TOP + 22, 276, 9, 0xff5d73, 1)
+    .rectangle(PF_CENTER_X - 178, PF_TOP + 22, 356, 9, 0xff5d73, 1)
     .setOrigin(0, 0.5)
     .setDepth(15)
     .setVisible(false);
@@ -1170,7 +1165,7 @@ function spawnVFormationPattern(scene, wave) {
 
 function spawnZigzagPattern(scene, wave) {
   [-1, 1].forEach((side) => {
-    const baseX = Phaser.Math.Clamp(PF_CENTER_X + side * 70, PF_LEFT + 40, PF_RIGHT - 40);
+    const baseX = Phaser.Math.Clamp(PF_CENTER_X + side * 120, PF_LEFT + 40, PF_RIGHT - 40);
     makeSquadEnemy(scene, 'shooter', 'zigzag', baseX, -30, {
       vy: 110 + wave * 5,
       baseX,
@@ -1352,7 +1347,7 @@ function updateBoss(scene, boss, time, delta) {
   }
 
   boss.sprite.x = Phaser.Math.Clamp(
-    PF_CENTER_X + Math.sin(time / 1000 * 1.1) * 90,
+    PF_CENTER_X + Math.sin(time / 1000 * 1.1) * 150,
     PF_LEFT + 50,
     PF_RIGHT - 50,
   );
